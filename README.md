@@ -16,6 +16,8 @@ from pteropy import Pterodactyl_Application
 
 base_url = "https://面板網址"
 api_key = "api key"
+#key創建位置:/admin/api
+
 #基本設定
 
 ptero = Pterodactyl_Application(base_url, api_key)
@@ -48,6 +50,8 @@ from pteropy import Pterodactyl_Client
 
 base_url = "https://面板網址"
 api_key = "api key"
+#key創建位置:/account/api
+
 #基本設定
 
 ptero = Pterodactyl_Client(base_url, api_key)
