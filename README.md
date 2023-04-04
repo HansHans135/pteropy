@@ -2,7 +2,9 @@
 適用於Pterodactyl api的python庫
 
 # 安裝
-```pip install pteropy```
+```
+pip install pteropy
+```
 
 # Pterodactyl_Application範例
 key創建位置:/admin/api
