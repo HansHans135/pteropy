@@ -48,7 +48,6 @@ class Pterodactyl_Application:
                     data = json.load(filt)
                 print(data["name"])
 
-
 class Pterodactyl_Client:
     def __init__(self, base_url, api_key):
         print("Pterodactyl setting...")
@@ -75,10 +74,10 @@ class Pterodactyl_Client:
         self.server=server
         url = f'{self.base_url}/api/client/servers/{self.server}'
         headers = {
-    "Authorization": f"Bearer {self.api_key}",
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-}
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
 
         response = requests.request('GET', url, headers=headers)
         return response.json()
@@ -86,10 +85,10 @@ class Pterodactyl_Client:
     def stop_server(self,server:str):
         url = f'{self.base_url}/api/client/servers/{server}/power'
         headers = {
-    "Authorization": f"Bearer {self.api_key}",
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-}
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
         payload = '{"signal": "stop"}'
 
         response = requests.request('POST', url, data=payload, headers=headers)
@@ -98,10 +97,10 @@ class Pterodactyl_Client:
     def start_server(self,server:str):
         url = f'{self.base_url}/api/client/servers/{server}/power'
         headers = {
-    "Authorization": f"Bearer {self.api_key}",
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-}
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
         payload = '{"signal": "start"}'
 
         response = requests.request('POST', url, data=payload, headers=headers)
@@ -110,10 +109,10 @@ class Pterodactyl_Client:
     def restart_server(self,server:str):
         url = f'{self.base_url}/api/client/servers/{server}/power'
         headers = {
-    "Authorization": f"Bearer {self.api_key}",
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-}
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
         payload = '{"signal": "restart"}'
 
         response = requests.request('POST', url, data=payload, headers=headers)
@@ -122,11 +121,37 @@ class Pterodactyl_Client:
     def kill_server(self,server:str):
         url = f'{self.base_url}/api/client/servers/{server}/power'
         headers = {
-    "Authorization": f"Bearer {self.api_key}",
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-}
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
         payload = '{"signal": "kill"}'
 
         response = requests.request('POST', url, data=payload, headers=headers)
+        return response
+    
+    def rename_server(self,server:str,name:str):
+        url = f'{self.base_url}/api/client/servers/{server}/settings/rename'
+        headers = {
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
+        payload = {
+            "name": name
+        }
+        response = requests.request('POST',url,data=payload,headers=headers)
+        return response
+        
+    def send_command(self,server:str,command:str):
+        url = f'{self.base_url}/api/client/servers/{server}/command'
+        headers = {
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
+        payload = {
+        "command": command
+        }  
+        response = requests.request('POST',url,data=payload,headers=headers)
         return response
