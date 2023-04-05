@@ -1,0 +1,8 @@
+README.md
+setup.py
+pteropy/__init__.py
+pteropy/pteropy.py
+pteropy.egg-info/PKG-INFO
+pteropy.egg-info/SOURCES.txt
+pteropy.egg-info/dependency_links.txt
+pteropy.egg-info/top_level.txt
