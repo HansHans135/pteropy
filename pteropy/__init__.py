@@ -168,9 +168,7 @@ class Pterodactyl_Client:
         "Accept": "application/json",
         "Content-Type": "application/json"
         }
-        payload = {
-            "name": name
-        }
+        payload = '{"name": "awa"}'.replace("awa",name)
         response = requests.request('POST',url,data=payload,headers=headers)
         return response
         
@@ -181,8 +179,6 @@ class Pterodactyl_Client:
         "Accept": "application/json",
         "Content-Type": "application/json"
         }
-        payload = {
-        "command": command
-        }  
+        payload = '{"command": "awa"}'.replace("awa",command)
         response = requests.request('POST',url,data=payload,headers=headers)
         return response
