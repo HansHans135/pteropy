@@ -160,3 +160,29 @@ class Pterodactyl_Client:
 
         response = requests.request('POST', url, data=payload, headers=headers)
         return response
+    
+    def rename_server(self,server:str,name:str):
+        url = f'{self.base_url}/api/client/servers/{server}/settings/rename'
+        headers = {
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
+        payload = {
+            "name": name
+        }
+        response = requests.request('POST',url,data=payload,headers=headers)
+        return response
+        
+    def send_command(self,server:str,command:str):
+        url = f'{self.base_url}/api/client/servers/{server}/command'
+        headers = {
+        "Authorization": f"Bearer {self.api_key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+        }
+        payload = {
+        "command": command
+        }  
+        response = requests.request('POST',url,data=payload,headers=headers)
+        return response

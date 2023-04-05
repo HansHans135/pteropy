@@ -75,6 +75,10 @@ ptero = Pterodactyl_Client(base_url, api_key)
 ptero.get_server("3fa3d78d")
 #獲得伺服器列表
 ptero.list_servers()
+#重命名伺服器
+ptero.rename_server("3fa3d78d","名子")
+#發送指令
+ptero.send_command("3fa3d78d","指令")
 
 #啟動伺服器
 ptero.start_server("3fa3d78d")

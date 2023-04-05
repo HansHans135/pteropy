@@ -1,11 +1,10 @@
 import setuptools
-# 若Discription.md中有中文 須加上 encoding="utf-8"
 with open("README.md", "r",encoding="utf-8") as f:
     long_description = f.read()
     
 setuptools.setup(
     name = "pteropy",
-    version = "0.1.2",
+    version = "0.1.3",
     author = "seanbbear",
     author_email="ccoccc14@gmail.com",
     description="簡單存取Pterodactyl api",
