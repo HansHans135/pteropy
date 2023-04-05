@@ -80,4 +80,8 @@ ptero.restart_server("3fa3d78d")
 ptero.stop_server("3fa3d78d")
 #強制關閉伺服器
 ptero.kill_server("3fa3d78d")
+#重新命名伺服器
+ptero.rename_server("3fa3d78d","uname")
+#發送指令
+ptero.command_send("3fa3d78d","ucommand")
 ```
