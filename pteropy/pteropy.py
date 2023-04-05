@@ -1,5 +1,4 @@
 import requests
-import os
 class Pterodactyl_Application:
     def __init__(self, base_url, api_key):
         print("Pterodactyl_Application setting...")
