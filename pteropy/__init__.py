@@ -25,6 +25,16 @@ class Pterodactyl_Application:
         except:
             print("pteropy ready!")
         #print(response.json())
+    def list_uesrs(self):
+        url = f'{self.base_url}/api/application/users'
+        headers = {
+    "Authorization": f"Bearer {self.api_key}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+        response = requests.request('GET', url, headers=headers)
+        return response.json()
     
     def create_user(self, username, email, password):
         endpoint = f"{self.base_url}/api/application/users"
@@ -74,6 +84,16 @@ class Pterodactyl_Client:
             print("Pterodactyl token invalid :(")
         except:
             print("pteropy ready!")
+    
+    def list_servers(self):
+        url = f'{self.base_url}/api/client'
+        headers = {
+    "Authorization": f"Bearer {self.api_key}",
+    "Accept": "application/json"
+    }
+
+        response = requests.request('GET', url, headers=headers)
+        return response.json()
     
     def get_server(self,server:str):
         self.server=server

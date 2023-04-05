@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pteropy
-Version: 0.1.1
+Version: 0.1.2
 Summary: 簡單存取Pterodactyl api
 Home-page: https://github.com/HansHans135/pteropy
 Author: seanbbear
@@ -17,7 +17,9 @@ Description-Content-Type: text/markdown
 適用於Pterodactyl api的python庫
 
 # 安裝
-```pip install pteropy```
+```
+pip install pteropy
+```
 
 # Pterodactyl_Application範例
 key創建位置:/admin/api
@@ -50,6 +52,8 @@ ptero = Pterodactyl_Application(base_url, api_key)
 
 #創建用戶
 ptero.create_user(username="用戶名",email="用戶email", password="密碼")
+#所有用戶
+ptero.list_users()
 ```
 
 
@@ -84,6 +88,8 @@ ptero = Pterodactyl_Client(base_url, api_key)
 
 #獲得伺服器資料
 ptero.get_server("3fa3d78d")
+#獲得伺服器列表
+ptero.list_servers()
 
 #啟動伺服器
 ptero.start_server("3fa3d78d")

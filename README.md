@@ -37,6 +37,8 @@ ptero = Pterodactyl_Application(base_url, api_key)
 
 #創建用戶
 ptero.create_user(username="用戶名",email="用戶email", password="密碼")
+#所有用戶
+ptero.list_users()
 ```
 
 
@@ -71,6 +73,8 @@ ptero = Pterodactyl_Client(base_url, api_key)
 
 #獲得伺服器資料
 ptero.get_server("3fa3d78d")
+#獲得伺服器列表
+ptero.list_servers()
 
 #啟動伺服器
 ptero.start_server("3fa3d78d")
