@@ -3,7 +3,9 @@ import os
 import json
 class Pterodactyl_Application:
     def __init__(self, base_url, api_key):
-        print("Pterodactyl setting...")
+        print("pteropy setting...")
+        if base_url[-1]=="/":
+            base_url=base_url[:-1]
         self.base_url = base_url
         self.api_key = api_key
         endpoint = f"{self.base_url}/api/application/users"
@@ -21,7 +23,7 @@ class Pterodactyl_Application:
             response.json()["errors"]
             print("Pterodactyl token invalid :(")
         except:
-            print("Pterodactyl ready!")
+            print("pteropy ready!")
         #print(response.json())
     
     def create_user(self, username, email, password):
@@ -51,7 +53,9 @@ class Pterodactyl_Application:
 
 class Pterodactyl_Client:
     def __init__(self, base_url, api_key):
-        print("Pterodactyl setting...")
+        print("pteropy setting...")
+        if base_url[-1]=="/":
+            base_url=base_url[:-1]
         self.base_url = base_url
         self.api_key = api_key
         endpoint = f"{self.base_url}/api/client/account"
@@ -69,7 +73,7 @@ class Pterodactyl_Client:
             response.json()["errors"]
             print("Pterodactyl token invalid :(")
         except:
-            print("Pterodactyl ready!")
+            print("pteropy ready!")
     
     def get_server(self,server:str):
         self.server=server
@@ -81,7 +85,13 @@ class Pterodactyl_Client:
 }
 
         response = requests.request('GET', url, headers=headers)
-        return response.json()
+        try:
+            if response.json()["errors"][0]["status"] == "404":
+                return None
+            else:
+                return response.json()
+        except:
+            return response.json()
     
     def stop_server(self,server:str):
         url = f'{self.base_url}/api/client/servers/{server}/power'
