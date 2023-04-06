@@ -1,5 +1,6 @@
 import pteropy
 import discord
+#請使用pycord
 import json
 from discord.ext import commands
 from discord import option
