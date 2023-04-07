@@ -6,6 +6,7 @@
 pip install pteropy
 ```
 
+
 # Pterodactyl_Application範例
 key創建位置:/admin/api
 
@@ -35,6 +36,8 @@ base_url = "https://面板網址"
 api_key = "api key"
 ptero = Pterodactyl_Application(base_url, api_key)
 
+#檢查api連線狀態
+ptero.check()
 #創建用戶
 ptero.create_user(username="用戶名",email="用戶email", password="密碼")
 #所有用戶
@@ -71,6 +74,8 @@ base_url = "https://面板網址"
 api_key = "api key"
 ptero = Pterodactyl_Client(base_url, api_key)
 
+#檢查api連線狀態
+ptero.check()
 #獲得伺服器資料
 ptero.get_server("3fa3d78d")
 #獲得伺服器列表

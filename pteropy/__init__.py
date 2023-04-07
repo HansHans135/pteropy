@@ -3,11 +3,12 @@ import os
 import json
 class Pterodactyl_Application:
     def __init__(self, base_url, api_key):
-        print("pteropy setting...")
         if base_url[-1]=="/":
             base_url=base_url[:-1]
         self.base_url = base_url
         self.api_key = api_key
+
+    def check(self):
         endpoint = f"{self.base_url}/api/application/users"
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -17,14 +18,13 @@ class Pterodactyl_Application:
         try:
             response = requests.get(endpoint, headers=headers)
         except:
-            print("Pterodactyl panel url invalid :(")
-            return
+            
+            return False
         try:
             response.json()["errors"]
-            print("Pterodactyl token invalid :(")
+            return False
         except:
-            print("pteropy ready!")
-        #print(response.json())
+            return True
     def list_uesrs(self):
         url = f'{self.base_url}/api/application/users'
         headers = {
@@ -63,11 +63,12 @@ class Pterodactyl_Application:
 
 class Pterodactyl_Client:
     def __init__(self, base_url, api_key):
-        print("pteropy setting...")
         if base_url[-1]=="/":
             base_url=base_url[:-1]
         self.base_url = base_url
         self.api_key = api_key
+    
+    def check(self):
         endpoint = f"{self.base_url}/api/client/account"
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -77,14 +78,14 @@ class Pterodactyl_Client:
         try:
             response = requests.get(endpoint, headers=headers)
         except:
-            print("Pterodactyl panel url invalid :(")
-            return
+            
+            return False
         try:
             response.json()["errors"]
-            print("Pterodactyl token invalid :(")
+            return False
         except:
-            print("pteropy ready!")
-    
+            return True
+
     def list_servers(self):
         url = f'{self.base_url}/api/client'
         headers = {
