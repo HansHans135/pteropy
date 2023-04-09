@@ -4,8 +4,8 @@ with open("README.md", "r",encoding="utf-8") as f:
     
 setuptools.setup(
     name = "pteropy",
-    version = "0.1.6",
-    author = "seanbbear",
+    version = "0.1.7",
+    author = "Hans",
     author_email="ccoccc14@gmail.com",
     description="簡單存取Pterodactyl api",
     long_description=long_description,
