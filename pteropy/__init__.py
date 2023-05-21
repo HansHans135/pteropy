@@ -146,9 +146,10 @@ class Pterodactyl_Client:
         if allowed_ips == None:
             payload = {"description": description}
         else:
-            payload = {"description": description,"allowed_ips": allowed_ips}
+            payload = {"description": description, "allowed_ips": allowed_ips}
 
-        response = requests.request('POST', url, data=json.dumps(payload), headers=headers)
+        response = requests.request(
+            'POST', url, data=json.dumps(payload), headers=headers)
         return response.json()
 
     def delete_API_key(self, key_identifier):
@@ -156,6 +157,12 @@ class Pterodactyl_Client:
         headers = self.headers
         response = requests.request('DELETE', url,  headers=headers)
         return response
+
+    def  list_databases(self,server):
+        url = f'{self.base_url}/api/client/servers/{server}/databases'
+        headers = self.headers
+        response = requests.request('GET', url,  headers=headers)
+        return response.json()
 
     def get_server(self, server: str):
         self.server = server
@@ -207,12 +214,14 @@ class Pterodactyl_Client:
         url = f'{self.base_url}/api/client/servers/{server}/settings/rename'
         headers = self.headers
         payload = {"name": name}
-        response = requests.request('POST', url, data=json.dumps(payload), headers=headers)
+        response = requests.request(
+            'POST', url, data=json.dumps(payload), headers=headers)
         return response
 
     def send_command(self, server: str, command: str):
         url = f'{self.base_url}/api/client/servers/{server}/command'
         headers = self.headers
         payload = {"command": command}
-        response = requests.request('POST', url, data=json.dumps(payload), headers=headers)
+        response = requests.request(
+            'POST', url, data=json.dumps(payload), headers=headers)
         return response
