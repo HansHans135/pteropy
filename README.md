@@ -110,4 +110,6 @@ ptero.restart_server("3fa3d78d")  #重啟伺服器
 ptero.stop_server("3fa3d78d")  #關閉伺服器
 
 ptero.kill_server("3fa3d78d")  #強制關閉伺服器
+
+#資料庫已經好了等待更新
 ```

@@ -1,6 +1,7 @@
 import requests
 import os
 import json
+import urllib.parse
 
 
 class Pterodactyl_Application:
@@ -158,11 +159,66 @@ class Pterodactyl_Client:
         response = requests.request('DELETE', url,  headers=headers)
         return response
 
-    def  list_databases(self,server):
+    def list_databases(self, server):
         url = f'{self.base_url}/api/client/servers/{server}/databases'
         headers = self.headers
         response = requests.request('GET', url,  headers=headers)
         return response.json()
+
+    def create_databases(self, server, database, remote):
+        url = f'{self.base_url}/api/client/servers/{server}/databases'
+        headers = self.headers
+        payload = {
+            "database": database,
+            "remote": remote
+        }
+        response = requests.request(
+            'POST', url, data=json.dumps(payload), headers=headers)
+        return response.json()
+
+    def rotate_password(self, server, database):
+        url = f'{self.base_url}/api/client/servers/1a7ce997/databases/{database}/rotate-password'
+        headers = self.headers
+        response = requests.request('POST', url, headers=headers)
+        return response.json()
+
+    def delete_database(self, server, database):
+        url = f'{self.base_url}/api/client/servers/{server}/databases/{database}'
+        headers = self.headers
+        response = requests.request('DELETE', url, headers=headers)
+        return response
+
+    def list_files(self, server, directory=None):
+        if directory:
+            url = f'{self.base_url}/api/client/servers/{server}/files/list?directory={urllib.parse.quote_plus(directory)}'
+        else:
+            url = f'{self.base_url}/api/client/servers/{server}/files/list'
+        headers = self.headers
+        response = requests.request('GET', url, headers=headers)
+        return response.json()
+
+    def get_file_contents(self, server, file):
+        url = f'{self.base_url}/api/client/servers/{server}/files/contents?file={urllib.parse.quote_plus(file)}'
+        headers = self.headers
+        response = requests.request('GET', url,  headers=headers)
+        return response.text
+
+    def download_file(self, server, file):
+        url = f'{self.base_url}/api/client/servers/{server}/files/download?file={urllib.parse.quote_plus(file)}'
+        headers = self.headers
+        response = requests.request('GET', url, headers=headers)
+        return response.json()
+
+    def rename_file(self, server,root,files):
+        url = f'{self.base_url}/api/client/servers/{server}/files/rename'
+        headers = self.headers
+        payload = {
+            "root": root,
+            "files":files
+        }
+
+        response = requests.request('PUT', url, data=json.dumps(payload), headers=headers)
+        return response
 
     def get_server(self, server: str):
         self.server = server
